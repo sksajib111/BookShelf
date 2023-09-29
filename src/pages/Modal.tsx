@@ -1,6 +1,6 @@
 import { toggleModal } from "../redux/features/Books/BookSlice";
 import { useEditProductMutation } from "../redux/features/Books/Booksapi";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppDispatch } from "../redux/hooks";
 import { format } from "date-fns";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
@@ -12,7 +12,7 @@ export default function Modal({ book }: any) {
   const dispatch = useAppDispatch();
   const [editProduct, { isLoading, isError }] = useEditProductMutation();
   console.log(isLoading, isError);
-  const { user } = useAppSelector((state) => state.user);
+  // const { user } = useAppSelector((state) => state.user);
   const [publicationDate, setPublicationDate] = useState(new Date());
 
   const handleEdit = async (event: any) => {

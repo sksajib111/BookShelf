@@ -14,16 +14,15 @@ export default function Signup() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  interface IUser {
-    email: string;
-    password: string;
-  }
-  const onSubmit = (user: IUser) => {
+  // interface IUser {
+  //   email: string;
+  //   password: string;
+  // }
+  const onSubmit = (user: any) => {
     console.log(user);
     dispatch(createUser({ email: user?.email, password: user?.password }));
     if (!isError) {
@@ -59,7 +58,7 @@ export default function Signup() {
                   type="email"
                   {...register("email", { required: true })}
                   placeholder="email here"
-                  className="input input-bordered border-2 w-full bg-[#fff]"
+                  className="input input-bordered border-2 w-full"
                   aria-invalid={errors.email ? "true" : "false"}
                 />
                 {errors.email?.type === "required" && (
@@ -84,7 +83,7 @@ export default function Signup() {
                     },
                   })}
                   placeholder="password here"
-                  className="input input-bordered border-2 w-full bg-[#fff]"
+                  className="input input-bordered border-2 w-full "
                   aria-invalid={errors.password ? "true" : "false"}
                 />
                 {errors.password?.type === "required" && (

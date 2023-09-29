@@ -1,20 +1,20 @@
 import {
-  useGetBooksQuery,
   usePostBookMutation,
 } from "../redux/features/Books/Booksapi";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppSelector } from "../redux/hooks";
 import { format } from "date-fns";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
 export default function AddProducts() {
   const [PublicationDate, setPublicationDate] = useState(new Date());
-  const { data } = useGetBooksQuery(undefined);
+  // const { data } = useGetBooksQuery(undefined);
   const email = useAppSelector((state) => state.user.user.email);
   const [postBook, createBookOptions] = usePostBookMutation();
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const hadnleAddProduct = (event: any) => {
+  // const dispatch = useAppDispatch();
+
+  const hadnleAddProduct = (event:any) => {
     event.preventDefault();
     const formattedPublicationDate = format(PublicationDate, "yyyy-MM-dd");
 
@@ -37,7 +37,7 @@ export default function AddProducts() {
     <div>
       <div className="pb-16">
         <div className="flex justify-center">
-          <div className=" mt-20 border border-2 rounded-2xl border-accent px-6 py-20 w-96 text-center">
+          <div className=" mt-20 border-2 rounded-2xl border-accent px-6 py-20 w-96 text-center">
             <p className="font-bold  mb-4">Add A Product</p>
             <form action="" onSubmit={hadnleAddProduct}>
               <label htmlFor="title" className="mt-4  ">
@@ -77,7 +77,7 @@ export default function AddProducts() {
               <DatePicker
                 name="PublicationDate"
                 selected={PublicationDate}
-                onChange={(date: any) => setPublicationDate(date)}
+                onChange={(date:any ) => setPublicationDate(date)}
                 className="input input-bordered input-accent  border-2  w-full  mb-4 "
               />
               <input

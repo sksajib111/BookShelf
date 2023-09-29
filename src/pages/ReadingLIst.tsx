@@ -10,9 +10,9 @@ export default function ReadingLIst() {
   const { email } = useAppSelector((state) => state.user.user);
 
   console.log(email);
-  const { data, isLoading } = useGetReadingListQuery(email);
+  const { data } = useGetReadingListQuery(email);
 
-  const [updateStaus, { isLoading: updateLoading, isError, isSuccess, error }] =
+  const [updateStaus, { isLoading: isSuccess, error }] =
     useUpdateReadingStatusMutation();
   const handleupdateStatus = (id: string) => {
     updateStaus(id);
@@ -34,7 +34,7 @@ export default function ReadingLIst() {
         {data?.map((book: any) => (
           <div className="card w-96 bg-base-100 shadow-xl">
             <figure>
-              <img src="https://l8.nu/rMS1" alt="Shoes" />
+              <img src="https://i.ibb.co/3dxFsTN/book-of-famous-writer-humayun-ahmed.jpg" alt="Shoes" />
             </figure>
 
             <div className="card-body">

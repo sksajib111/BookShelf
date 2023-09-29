@@ -26,22 +26,21 @@ export default function Products() {
   const [Genre, setGenre] = useState("");
   const [Year, setYear] = useState(0);
   const { togglePostBook } = useAppSelector((state) => state.book);
-  const { wishlist, readingList } = useAppSelector((state) => state.wishlist);
-  const [addWishlist, { isError: wisherror, isLoading: wishloading }] =
+  const { wishlist } = useAppSelector((state) => state.wishlist);
+  const [addWishlist, { isError: wisherror }] =
     usePostWishListMutation();
-  const [addReadingList, { isError: readingerror, isLoading: readingLoading }] =
+  const [addReadingList, { isError: readingerror }] =
     useAddToReadingListMutation();
   console.log(wishlist);
   console.log(wishlist); //
   const { email } = useAppSelector((state) => state.user.user);
-  const { data, error, isLoading } = useGetBooksQuery({
+  const { data, isLoading } = useGetBooksQuery({
     Genre,
     Year,
     searchTerm,
   });
   const {
     data: mainbook,
-    isError,
     isLoading: bookloading,
   } = useGetAllBooksQuery(undefined);
 
@@ -158,7 +157,7 @@ export default function Products() {
       <ToastContainer />
       <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-4">
         {data?.data?.map((book: IBook) => (
-          <div className="card w-96 bg-base-100 bg-gray-400 shadow-xl">
+          <div className="card w-96 bg-gray-400 shadow-xl">
             <figure className="p-4">
               <img
                 className="rounded-2xl"

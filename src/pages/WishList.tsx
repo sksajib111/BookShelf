@@ -12,7 +12,7 @@ export default function WishList() {
         {data?.map((book: any) => (
           <div className="card w-96 bg-base-100 shadow-xl">
             <figure>
-              <img src="https://l8.nu/rMS1" alt="Shoes" />
+              <img src="https://i.ibb.co/3dxFsTN/book-of-famous-writer-humayun-ahmed.jpg" alt="Shoes" />
             </figure>
 
             <div className="card-body">

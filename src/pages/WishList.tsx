@@ -1,12 +1,16 @@
 import { useGetWishListQuery } from "../redux/features/wishlist/wishlistApi";
 import { useAppSelector } from "../redux/hooks";
 import "./pages.css";
+import { Helmet } from 'react-helmet-async';
+
 
 export default function WishList() {
   const { email } = useAppSelector((state) => state.user.user);
   const { data } = useGetWishListQuery(email);
   console.log(data);
   return (
+    <>
+    <Helmet title="BookShelf | WishList"></Helmet>
     <div className="containers mx-auto">
       <div className="grid grid-cols-1 container  sm:grid-cols-2 md:grid-cols-3 gap-4">
         {data?.map((book: any) => (
@@ -34,5 +38,6 @@ export default function WishList() {
         ))}
       </div>
     </div>
+    </>
   );
 }

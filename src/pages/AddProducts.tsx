@@ -6,6 +6,9 @@ import { format } from "date-fns";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
+
+
 export default function AddProducts() {
   const [PublicationDate, setPublicationDate] = useState(new Date());
   // const { data } = useGetBooksQuery(undefined);
@@ -35,6 +38,7 @@ export default function AddProducts() {
   };
   return (
     <div>
+      <Helmet title="BookShelf | Add-Products"></Helmet>
       <div className="pb-16">
         <div className="flex justify-center">
           <div className=" mt-20 border-2 rounded-2xl border-accent px-6 py-20 w-96 text-center">

@@ -6,6 +6,10 @@ import { useAppSelector } from "../redux/hooks";
 import { AiOutlineCheck } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "./pages.css";
+import { Helmet } from 'react-helmet-async';
+
+
+
 export default function ReadingLIst() {
   const { email } = useAppSelector((state) => state.user.user);
 
@@ -25,6 +29,8 @@ export default function ReadingLIst() {
     console.log(error);
   };
   return (
+    <>
+    <Helmet title="BookShelf | ReadingList"></Helmet>
     <div className=" containers mx-auto">
       <ToastContainer />
       <h1 className="text-5xl font-bold pb-2 text-white text-center underline my-6">
@@ -75,5 +81,6 @@ export default function ReadingLIst() {
         ))}
       </div>
     </div>
+    </>
   );
 }

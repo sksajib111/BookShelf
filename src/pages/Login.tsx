@@ -6,6 +6,10 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { Helmet } from 'react-helmet-async';
+
+
+
 export default function Login() {
   const {
     register,
@@ -39,6 +43,7 @@ export default function Login() {
 
   return (
     <div>
+      <Helmet title="BookShelf | Login"></Helmet>
       <Navbar></Navbar>
       <ToastContainer />
       <div className="pb-16">

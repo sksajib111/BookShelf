@@ -3,6 +3,11 @@ import { useGetAllBooksQuery } from "../redux/features/Books/Booksapi";
 import { useAppDispatch } from "../redux/hooks";
 import { IBook } from "../types/BooksType";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
+
+
+
+
 export default function Home() {
   const dispatch = useAppDispatch();
   const { data: result, isLoading } = useGetAllBooksQuery(undefined);
@@ -27,7 +32,9 @@ export default function Home() {
     </>;
   }
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <>
+    <Helmet title="BookShelf | Home"></Helmet>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-center">
       {sortedData?.map((book: IBook) => (
         <div className="card w-96 bg-base-100v shadow-xl">
           <figure>
@@ -57,5 +64,6 @@ export default function Home() {
         </div>
       ))}
     </div>
+    </>
   );
 }

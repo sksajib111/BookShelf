@@ -1,18 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
+import "./index.css";
 
-import { Provider } from 'react-redux';
-import store from './redux/store.ts';
-import routes from './routes/routes.tsx';
+import { Provider } from "react-redux";
+import store from "./redux/store.ts";
+import routes from "./routes/routes.tsx";
+import { HelmetProvider } from "react-helmet-async";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
- 
-<Provider store={store}>
-<RouterProvider router={routes} />
-</Provider>
-
+    <HelmetProvider>
+      <Provider store={store}>
+        <div className="max-w-screen-xl mx-auto">
+          <RouterProvider router={routes} />
+        </div>
+      </Provider>
+    </HelmetProvider>
   </React.StrictMode>
 );

@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./pages.css";
+import { Helmet } from 'react-helmet-async';
 
 export default function Products() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -93,6 +94,8 @@ export default function Products() {
   }
 
   return (
+    <>
+    <Helmet title="BookShelf | Products"></Helmet>
     <div className="containers mx-auto">
       <form action="" onSubmit={HandleSearch}>
         <div className="join flex justify-center flex-row mb-4">
@@ -215,5 +218,6 @@ export default function Products() {
         ))}
       </div>
     </div>
+    </>
   );
 }

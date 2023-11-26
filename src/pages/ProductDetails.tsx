@@ -14,6 +14,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "./Modal";
+import { Helmet } from "react-helmet-async";
+
+
+
 export default function ProductDetails() {
   const { id } = useParams();
 
@@ -61,6 +65,7 @@ export default function ProductDetails() {
   return (
     <div>
       <ToastContainer />
+      <Helmet title="BookShelf | ProductDetails"></Helmet>
       <div className="hero min-h-screen ">
         <div className="hero-content gap-8 flex-col rounded-xl bg-gray-400 lg:flex-row">
           <img

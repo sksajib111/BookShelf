@@ -37,7 +37,7 @@ export default function Home() {
     <Helmet title="BookShelf | Home"></Helmet>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {sortedData?.map((book: IBook) => (
-        <div className="card w-96 bg-base-100v shadow-2xl m-6 mt-0 text-center">
+        <div className="card w-96 bg-base-100v shadow-2xl mx-auto mt-0 mb-6">
           <figure>
             <img src="https://i.ibb.co/3dxFsTN/book-of-famous-writer-humayun-ahmed.jpg" alt="Shoes" />
           </figure>

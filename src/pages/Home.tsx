@@ -37,13 +37,13 @@ export default function Home() {
     <Helmet title="BookShelf | Home"></Helmet>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {sortedData?.map((book: IBook) => (
-        <div className="card w-96 bg-base-100v shadow-xl">
+        <div className="card w-96 bg-base-100v shadow-2xl m-6 mt-0 text-center">
           <figure>
             <img src="https://i.ibb.co/3dxFsTN/book-of-famous-writer-humayun-ahmed.jpg" alt="Shoes" />
           </figure>
 
           <div className="card-body">
-            <h2 className="card-title">{book?.Title}</h2>
+            <h2 className="card-title uppercase justify-center">{book?.Title}</h2>
             <p>
               Books have the power to transport us to new worlds, ignite our
               imaginations, and inspire us to reach for greatness.
@@ -51,7 +51,7 @@ export default function Home() {
             <p>Genre: {book?.Genre}</p>
             <p>Author: {book?.Author}</p>
             <p>Published: {book?.PublicationDate}</p>
-            <div className="card-actions justify-end">
+            <div className="card-actions justify-center mt-6">
               <Link to={`/product-details/${book._id}`}>
                 <Button onClick={() => handleSingleBook(book)} btnNam="View Details"></Button>
               </Link>

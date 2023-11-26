@@ -21,7 +21,7 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="navbar bg-[#ffffff]">
+    <div className="navbar bg-base-200 rounded-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

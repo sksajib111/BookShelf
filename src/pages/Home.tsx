@@ -4,6 +4,7 @@ import { useAppDispatch } from "../redux/hooks";
 import { IBook } from "../types/BooksType";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
+import Button from "../Components/Button/Button";
 
 
 
@@ -34,7 +35,7 @@ export default function Home() {
   return (
     <>
     <Helmet title="BookShelf | Home"></Helmet>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-center">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {sortedData?.map((book: IBook) => (
         <div className="card w-96 bg-base-100v shadow-xl">
           <figure>
@@ -52,12 +53,7 @@ export default function Home() {
             <p>Published: {book?.PublicationDate}</p>
             <div className="card-actions justify-end">
               <Link to={`/product-details/${book._id}`}>
-                <button
-                  onClick={() => handleSingleBook(book)}
-                  className="btn btn-primary border-0"
-                >
-                  view details
-                </button>
+                <Button onClick={() => handleSingleBook(book)} btnNam="View Details"></Button>
               </Link>
             </div>
           </div>

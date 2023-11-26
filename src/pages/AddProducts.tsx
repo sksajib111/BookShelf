@@ -41,7 +41,7 @@ export default function AddProducts() {
       <Helmet title="BookShelf | Add-Products"></Helmet>
       <div className="pb-16">
         <div className="flex justify-center">
-          <div className=" mt-20 border-2 rounded-2xl border-accent px-6 py-20 w-96 text-center">
+          <div className=" mt-20 border-2 rounded-2xl border-[#57cc99] px-6 py-20 w-96 text-center">
             <p className="font-bold  mb-4">Add A Product</p>
             <form action="" onSubmit={hadnleAddProduct}>
               <label htmlFor="title" className="mt-4  ">
@@ -51,7 +51,7 @@ export default function AddProducts() {
                 name="Title"
                 type="text"
                 placeholder="Title"
-                className="input input-bordered input-accent  border-2 t w-full  mb-4"
+                className="input input-bordered input-accent border-[#57cc99] border-2 w-full  mb-4"
                 required
               />
               <label htmlFor="author" className="mt-4 ">
@@ -61,7 +61,7 @@ export default function AddProducts() {
                 name="Author"
                 type="text"
                 placeholder="Author"
-                className="input input-bordered input-accent border-2  w-full mb-4"
+                className="input input-bordered input-accent border-[#57cc99] border-2  w-full mb-4"
                 required
               />
               <label htmlFor="genre" className="mt-4 ">
@@ -71,7 +71,7 @@ export default function AddProducts() {
                 name="Genre"
                 type="text"
                 placeholder="Genre"
-                className="input input-bordered input-accent border-2  w-full mb-4"
+                className="input input-bordered input-accent border-[#57cc99] border-2  w-full mb-4"
                 required
               />
               <label htmlFor="date" className="mt-4 ">
@@ -82,12 +82,12 @@ export default function AddProducts() {
                 name="PublicationDate"
                 selected={PublicationDate}
                 onChange={(date:any ) => setPublicationDate(date)}
-                className="input input-bordered input-accent  border-2  w-full  mb-4 "
+                className="input input-bordered input-accent border-[#57cc99]  border-2  w-full  mb-4 "
               />
               <input
                 type="submit"
                 value="submit"
-                className="w-full mt-4 btn-accent py-2 rounded  font-bold"
+                className="w-full mt-4 btn bg-[#57cc99] py-2 hover:bg-[#57cc99] hover:text-white rounded-2xl  font-bold text-lg"
               />
             </form>
           </div>

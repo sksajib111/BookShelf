@@ -20,7 +20,7 @@ export default function ReadingLIst() {
     useUpdateReadingStatusMutation();
   const handleupdateStatus = (id: string) => {
     updateStaus(id);
-    console.log(id);
+    // console.log(id);
     if (isSuccess) {
       toast.success("reading status updated");
     } else {
@@ -31,20 +31,20 @@ export default function ReadingLIst() {
   return (
     <>
     <Helmet title="BookShelf | ReadingList"></Helmet>
-    <div className=" containers mx-auto">
+    <div>
       <ToastContainer />
-      <h1 className="text-5xl font-bold pb-2 text-white text-center underline my-6">
+      <h1 className="text-5xl font-bold pb-10 text-[#57cc99] text-center">
         My Reading List
-      </h1>
-      <div className="grid grid-cols-1 container  sm:grid-cols-2 md:grid-cols-3 gap-4">
+      </h1> 
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto place-items-center gap-4">
         {data?.map((book: any) => (
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 shadow-2xl mb-16">
             <figure>
               <img src="https://i.ibb.co/3dxFsTN/book-of-famous-writer-humayun-ahmed.jpg" alt="Shoes" />
             </figure>
 
             <div className="card-body">
-              <h2 className="card-title">{book?.newdata?.Title}</h2>
+              <h2 className="card-title justify-center">{book?.newdata?.Title}</h2>
               <p>
                 Books have the power to transport us to new worlds, ignite our
                 imaginations, and inspire us to reach for greatness.
@@ -56,7 +56,7 @@ export default function ReadingLIst() {
                 <div className="card-actions justify-end">
                   <button
                     onClick={() => handleupdateStatus(book?._id)}
-                    className="btn btn-outline btn-success"
+                    className="btn btn-outline btn-success mt-6"
                   >
                     Mark As Read{" "}
                     <AiOutlineCheck
@@ -67,7 +67,7 @@ export default function ReadingLIst() {
                   </button>
                 </div>
               ) : (
-                <button className="btn btn-outline btn-success " disabled>
+                <button className="btn btn-outline btn-success mt-6" disabled>
                   reading completed{" "}
                   <AiOutlineCheck
                     size={24}

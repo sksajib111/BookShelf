@@ -40,7 +40,7 @@ export default function Home() {
         <div className="card w-96 bg-base-100v shadow-2xl mx-auto mt-0 mb-6">
           <figure>
             <img src="https://i.ibb.co/3dxFsTN/book-of-famous-writer-humayun-ahmed.jpg" alt="Shoes" />
-          </figure>
+          </figure> 
 
           <div className="card-body">
             <h2 className="card-title uppercase justify-center">{book?.Title}</h2>

@@ -66,8 +66,8 @@ export default function ProductDetails() {
     <div>
       <ToastContainer />
       <Helmet title="BookShelf | ProductDetails"></Helmet>
-      <div className="hero min-h-screen ">
-        <div className="hero-content gap-8 flex-col rounded-xl bg-gray-400 lg:flex-row">
+      <div className="hero">
+        <div className="hero-content gap-8 flex-col rounded-xl bg-gray-400  lg:flex-row">
           <img
             src="https://i.ibb.co/tzGJ8QR/book136.jpg"
             className="max-w-sm rounded-lg shadow-2xl"

@@ -20,7 +20,8 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./pages.css";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
+import Button from "../Components/Button/Button";
 
 export default function Products() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -28,8 +29,7 @@ export default function Products() {
   const [Year, setYear] = useState(0);
   const { togglePostBook } = useAppSelector((state) => state.book);
   const { wishlist } = useAppSelector((state) => state.wishlist);
-  const [addWishlist, { isError: wisherror }] =
-    usePostWishListMutation();
+  const [addWishlist, { isError: wisherror }] = usePostWishListMutation();
   const [addReadingList, { isError: readingerror }] =
     useAddToReadingListMutation();
   console.log(wishlist);
@@ -40,10 +40,8 @@ export default function Products() {
     Year,
     searchTerm,
   });
-  const {
-    data: mainbook,
-    isLoading: bookloading,
-  } = useGetAllBooksQuery(undefined);
+  const { data: mainbook, isLoading: bookloading } =
+    useGetAllBooksQuery(undefined);
 
   const { status } = useAppSelector((state) => state.book);
   const HandleSearch = (event: any) => {
@@ -94,83 +92,89 @@ export default function Products() {
   }
 
   return (
-    <>
-    <Helmet title="BookShelf | Products"></Helmet>
-    <div className="containers mx-auto">
-      <form action="" onSubmit={HandleSearch}>
-        <div className="join flex justify-center flex-row mb-4">
-          <div className="max-w-xs">
-            <div>
-              <input
-                name="searchTerm"
-                className="input input-bordered  join-item"
-                placeholder="Search.."
-              />
+    <div>
+      <Helmet title="BookShelf | Products"></Helmet>
+
+      <div className="mb-16">
+        <form action="" onSubmit={HandleSearch}>
+          <div className="join flex justify-center flex-row mb-4">
+            <div className="max-w-xs">
+              <div>
+                <input
+                  name="searchTerm"
+                  className="input input-bordered input-accent border-[#57cc99] join-item"
+                  placeholder="Search.."
+                />
+              </div>
+            </div>
+            <select
+              className="select border-[#57cc99] select-accent join-item"
+              onChange={(e) => setGenre(e.target.value)}
+            >
+              <option value="">All Genres</option>
+              {mainbook?.data
+                ?.map((book: IBook) => book.Genre)
+                .filter(
+                  (
+                    genre: string | undefined,
+                    index: number,
+                    genres: (string | undefined)[]
+                  ) => genres.indexOf(genre) === index
+                )
+                .map((genre: string | undefined, index: number) => (
+                  <option value={genre} key={index}>
+                    {genre}
+                  </option>
+                ))}
+            </select>
+
+            <select
+              className="select border-[#57cc99] select-accent join-item"
+              onChange={(e) => setYear(Number(e.target.value))}
+            >
+              <option value="">All Year</option>
+              {Array.from(
+                new Set(
+                  mainbook?.data.map((book: IBook) =>
+                    new Date(book.PublicationDate!).getFullYear()
+                  )
+                )
+              ).map((year) => (
+                <option value={year?.toString()} key={year?.toString()}>
+                  {year as number}
+                </option>
+              ))} 
+            </select>
+
+            <div className="indicator">
+              <span className="indicator-item badge badge-secondary">
+                search here
+              </span>
+              <button type="submit" className="btn bg-[#57cc99] text-lg hover:text-white hover:bg-[#57cc99] border-[#57cc99] join-item">
+                Search
+              </button>
             </div>
           </div>
-          <select
-            className="select select-bordered join-item"
-            onChange={(e) => setGenre(e.target.value)}
-          >
-            <option value="">All Genres</option>
-            {mainbook?.data
-              ?.map((book: IBook) => book.Genre)
-              .filter(
-                (
-                  genre: string | undefined,
-                  index: number,
-                  genres: (string | undefined)[]
-                ) => genres.indexOf(genre) === index
-              )
-              .map((genre: string | undefined, index: number) => (
-                <option value={genre} key={index}>
-                  {genre}
-                </option>
-              ))}
-          </select>
+        </form>
+      </div>
 
-          <select
-            className="select select-bordered join-item"
-            onChange={(e) => setYear(Number(e.target.value))}
-          >
-            <option value="">All Year</option>
-            {Array.from(
-              new Set(
-                mainbook?.data.map((book: IBook) =>
-                  new Date(book.PublicationDate!).getFullYear()
-                )
-              )
-            ).map((year) => (
-              <option value={year?.toString()} key={year?.toString()}>
-                {year as number}
-              </option>
-            ))}
-          </select>
-
-          <div className="indicator">
-            <span className="indicator-item badge badge-secondary">
-              search here
-            </span>
-            <button type="submit" className="btn join-item">
-              Search
-            </button>
-          </div>
-        </div>
-      </form>
       <ToastContainer />
-      <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-4">
+
+      <div className="grid grid-cols-1 mx-auto sm:grid-cols-2 md:grid-cols-3 place-items-center gap-4">
         {data?.data?.map((book: IBook) => (
-          <div className="card w-96 bg-gray-400 shadow-xl">
-            <figure className="p-4">
+          <div className="card w-96 h-auto mb-20 shadow-2xl ">
+            <figure className="p-0">
               <img
-                className="rounded-2xl"
+                className=" h-96 w-full"
                 src="https://i.ibb.co/cDk7sRV/Brishti-Bilash-By-Humayun-Ahmed.jpg"
                 alt="Shoes"
               />
             </figure>
 
-            <div className="card-body">
-              <h2 className="card-title">{book?.Title}</h2>
+            <div className="card-body mb-6">
+              <h2 className="card-title justify-center mb-4 uppercase">
+                {book?.Title}
+              </h2>
               <p>
                 Books have the power to transport us to new worlds, ignite our
                 imaginations, and inspire us to reach for greatness.
@@ -188,7 +192,7 @@ export default function Products() {
                     <AiFillHeart
                       onClick={() => handleAddWishList(book)}
                       size={44}
-                      color="white"
+                      color="#57cc99"
                     />
                   </div>
                   <div className="indicator">
@@ -198,19 +202,17 @@ export default function Products() {
                     <BiBookReader
                       onClick={() => handleAddToReadingList(book)}
                       size={44}
-                      color="white"
+                      color="#57cc99"
                     />
                   </div>
                 </div>
               )}
-              <div className="card-actions justify-end">
+              <div className="card-actions justify-center">
                 <Link to={`/product-details/${book._id}`}>
-                  <button
+                  <Button
                     onClick={() => handleSingleBook(book)}
-                    className="btn btn-primary border-0"
-                  >
-                    view details
-                  </button>
+                    btnNam="View Details"
+                  ></Button>
                 </Link>
               </div>
             </div>
@@ -218,6 +220,5 @@ export default function Products() {
         ))}
       </div>
     </div>
-    </>
   );
 }
